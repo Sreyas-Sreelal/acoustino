@@ -14,7 +14,7 @@ pub fn parse_mxml(path: &str) -> Result<Vec<Note>, Box<dyn Error>> {
     let mut marker = "";
     loop {
         match reader.read_event_into(&mut buf) {
-            Err(e) => panic!("Error at position {}: {:?}", reader.buffer_position(), e),
+            Err(_) => return Err("Invalid MusicXML file passed!".into()),
             Ok(Event::Eof) => break,
             Ok(Event::Start(e)) => match e.name().as_ref() {
                 b"note" => {

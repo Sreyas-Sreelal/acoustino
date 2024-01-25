@@ -4,11 +4,11 @@ mod util;
 use util::do_conversion;
 
 #[tauri::command]
-fn convert(file: &str, pin: isize) -> String {
+fn convert(file: &str, pin: isize) -> Result<String,String> {
     print!("file is {}", file);
     match do_conversion(file, pin) {
-        Ok(output) => output,
-        Err(e) => e.to_string(),
+        Ok(output) => Ok(output),
+        Err(e) => Err(e.to_string()),
     }
 }
 
