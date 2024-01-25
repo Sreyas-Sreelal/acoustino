@@ -2,20 +2,30 @@ import { useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 import { open } from "@tauri-apps/api/dialog";
-import { Col, Divider, Row } from "antd";
+import { Button, Col, Divider, Modal, Row } from "antd";
 
 import CodeArea from "./container/CodeArea";
 import Header from "./container/Header";
 import Prepare from "./container/Prepare";
 import { appData } from "./data/app";
+import { convert_file } from "./framework/conversion";
 
 function App() {
   const [output, setOutput] = useState("");
   const [pin, setPin] = useState(11);
+  const [errorMsg, setErrorMsg] = useState("", []);
 
   async function onChooseFile(event) {
-    let filepath = await open()
-    setOutput(await invoke("convert", { file: filepath, pin }));
+    try {
+      let filepath = await open({ filters: [{ name: '', extensions: ["xml", "mxl"] }] });
+      if (filepath === null) {
+        return;
+      }
+      let result = await convert_file(filepath, pin);
+      setOutput(result);
+    } catch (err) {
+      setError(err);
+    }
   }
 
   return (
@@ -34,6 +44,9 @@ function App() {
         {appData.optionsectiontitle}
       </Divider>
       <Row>
+        <Modal open={errorMsg !== ""} onOk={() => setErrorMsg("")} onCancel={() => setErrorMsg("")}>
+          {errorMsg}
+        </Modal>
         <Col span={24}>
           <Prepare ChooseFileHandler={onChooseFile} setPin={setPin} pin={pin} />
         </Col>
