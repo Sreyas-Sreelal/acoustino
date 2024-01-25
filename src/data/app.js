@@ -1,9 +1,9 @@
 export const appData = {
     "choosefilebuttontext": "Choose File",
-    "optionsectiontitle": "Prepare",
+    "optionsectiontitle": "Select a MusicXML file to generate Arduino code",
     "headertitle": "Acoustino",
     "codeareatitle": "Generated Code",
-    "pinselectlabel": "Pin Number",
+    "pinselectlabel": "Arduino Pin Number ->",
     "copybuttontext": "Copy",
     "arduinominpin": 1,
     "arduinomaxpin": 11,
