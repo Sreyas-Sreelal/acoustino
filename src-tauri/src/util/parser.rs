@@ -29,26 +29,24 @@ pub fn parse_mxml(path: &str) -> Result<Vec<Note>, Box<dyn Error>> {
                 }
             },
             Ok(Event::Empty(e)) => {
-                if e.name().as_ref() == b"sound" {
+                if e.name().as_ref() == b"sound" && tempo == 1 {
+                    //let mut count = 0;
+                    let mut iter = e.attributes();
+                    while let Some(Ok(x)) = iter.next() {
+                        if x.key == quick_xml::name::QName(b"tempo") {
+                            tempo = x
+                                .value
+                                .clone()
+                                .iter()
+                                .map(|x| *x as char)
+                                .collect::<String>()
+                                .parse()?;
+                            break;
+                        }
+                        //count += 1;
+                    }
                     if tempo == 1 {
-                        //let mut count = 0;
-                        let mut iter = e.attributes();
-                        while let Some(Ok(x)) = iter.next() {
-                            if x.key == quick_xml::name::QName(b"tempo") {
-                                tempo = x
-                                    .value
-                                    .clone()
-                                    .iter()
-                                    .map(|x| *x as char)
-                                    .collect::<String>()
-                                    .parse()?;
-                                break;
-                            }
-                            //count += 1;
-                        }
-                        if tempo == 1 {
-                            tempo = 120;
-                        }
+                        tempo = 120;
                     }
                 }
             }
