@@ -25,18 +25,17 @@ pub fn extract_mxl_file(file: &str) -> Result<String, Box<dyn Error>> {
     //dbg!(&dir_name);
 
     extract(&buf, &PathBuf::from(&temp_path.join(&dir_name)), true)?;
-    for entry in glob(&(temp_path.join(&dir_name).to_str().unwrap().to_owned() + "/**/*.xml"))
+    for path in glob(&(temp_path.join(&dir_name).to_str().unwrap().to_owned() + "/**/*.xml"))
         .expect("Failed to read glob pattern")
+        .flatten()
     {
-        if let Ok(path) = entry {
-            let path = path.display().to_string();
-            if path.ends_with("container.xml") {
-                continue;
-            }
-
-            //dbg!(&path);
-            return Ok(path);
+        let path = path.display().to_string();
+        if path.ends_with("container.xml") {
+            continue;
         }
+
+        //dbg!(&path);
+        return Ok(path);
     }
 
     Err(
