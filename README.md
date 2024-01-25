@@ -1,7 +1,7 @@
 # Acoustino
 <p align="center">
 <img alt="acoustino" src="images/logo.png" height=250 width=250><br/>
-<a href="https://github.com/actions/toolkit"><img alt="GitHub Actions status" src="https://github.com/sreyas-sreelal/acoustino/workflows/build/badge.svg"></a>
+<a href="https://github.com/actions/toolkit"><img alt="GitHub Actions status" src="https://github.com/sreyas-sreelal/acoustino/workflows/Build/badge.svg"></a>
 <a href="https://github.com/Sreyas-Sreelal/acoustino/pulls"><img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/sreyas-sreelal/acoustino"></a>
 <a href="https://github.com/Sreyas-Sreelal/acoustino/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/sreyas-sreelal/acoustino"></a>
 <a href="https://github.com/Sreyas-Sreelal/acoustino/blob/master/LICENSE"><img alt="GitHub issues" src="https://img.shields.io/github/license/sreyas-sreelal/acoustino"></a>
