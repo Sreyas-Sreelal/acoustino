@@ -8,5 +8,5 @@ export const appData = {
     "arduinominpin": 1,
     "arduinomaxpin": 11,
     "repositorylink":"https://github.com/sreyas-sreelal/acoustino",
-    "repoLinkText":"Checkout the Github page"
+    "repoLinkText":"Source Code"
 }
