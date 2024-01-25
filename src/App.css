@@ -1,7 +1,14 @@
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family:anona
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafb);
+#root {
+  padding: 24px;
+}
+
+@font-face {
+  font-family: "DarumadropOne";
+  src: url("fonts/DarumadropOne-Regular.woff") format("woff");
 }
