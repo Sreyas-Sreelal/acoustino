@@ -24,7 +24,7 @@ function App() {
       let result = await convert_file(filepath, pin);
       setOutput(result);
     } catch (err) {
-      setError(err);
+      setErrorMsg(err);
     }
   }
 
