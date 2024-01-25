@@ -1,11 +1,14 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 import { open } from "@tauri-apps/api/dialog";
+import { Button, Col, Divider, InputNumber, Row, Select, Space, Typography } from "antd";
+import TextArea from "antd/es/input/TextArea";
+import { FileAddOutlined } from "@ant-design/icons";
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { arduinoLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 function App() {
-  const [file, setFile] = useState("");
   const [output, setOutput] = useState("");
   const [pin, setPin] = useState(11);
 
@@ -20,27 +23,48 @@ function App() {
 
 
   return (
-    <div className="container">
-      <h1>Acoustino</h1>
-      <textarea value={output}>
-      </textarea>
-      <select onChange={onSelectPin} value={pin}>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-      </select>
-      <button onClick={onClickConvert}>
-        Choose File to Convert
-      </button>
-    </div>
+    <>
+      <Row>
+
+        <Col span={24}>
+          <div style={{ textAlign: "center" }}>
+            <Typography.Title>Acoustino</Typography.Title>
+          </div>
+        </Col>
+      </Row>
+      {/* <Divider /> */}
+      <Row>
+        <Col span={24}>
+          <Typography.Title level={5}>Generated Code</Typography.Title>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={24}>
+          <SyntaxHighlighter
+            language="c"
+            style={arduinoLight}
+            customStyle={{ height: 200, maxHeight: 200, minHeight: 200, overflowY: scroll, width: "100%" }}
+            lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
+            wrapLines  >
+            {output}
+          </SyntaxHighlighter>
+        </Col>
+      </Row>
+      <Divider />
+      <Row>
+        <Col span={24}>
+          <div style={{ textAlign: "center" }}>
+            <Space>
+              <Typography.Text>Pin no: </Typography.Text>
+              <InputNumber min={1} max={11} onChange={setPin} value={pin} />
+              <Button type="primary" icon={<FileAddOutlined />} onClick={onClickConvert}>
+                Choose File to Convert
+              </Button>
+            </Space>
+          </div>
+        </Col>
+      </Row>
+    </>
   );
 }
 
