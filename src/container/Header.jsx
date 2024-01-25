@@ -6,7 +6,7 @@ import Link from "antd/es/typography/Link"
 
 const Header = () => {
     return (
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign:  "center" }}>
             <Row>
                 <Col span={24}>
                     <Space>
@@ -17,9 +17,12 @@ const Header = () => {
             </Row>
             <Row>
                 <Col span={24}>
-
-                    <Link style={{color:"grey"}} href={appData.repositorylink}>{appData.repoLinkText}</Link>
-
+                    <Link style={{ color: "grey" }} href={appData.repositorylink} target="_blank">
+                        <Space>
+                            <img src="ghlogo.png" width={40} height={40} />
+                            {appData.repoLinkText}
+                        </Space>
+                    </Link>
                 </Col>
             </Row>
         </div>
