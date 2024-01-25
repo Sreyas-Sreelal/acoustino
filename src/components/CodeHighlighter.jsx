@@ -6,7 +6,7 @@ const CodeHighlighter = ({ code }) => {
         <SyntaxHighlighter
             language="arduino"
             style={arduinoLight}
-            customStyle={{ height: 230, maxHeight: 230, minHeight: 230, overflowY: scroll, padding: 0,
+            customStyle={{ height: 200, maxHeight: 200, minHeight: 200, overflowY: scroll, padding: 0,
             margin: 0 }}
             lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
             wrapLines
