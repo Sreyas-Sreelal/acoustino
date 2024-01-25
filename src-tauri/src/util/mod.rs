@@ -19,7 +19,7 @@ pub fn extract_mxl_file(file: &str) -> Result<String, Box<dyn Error>> {
     }
 
     //dbg!(&temp_path);
-    let buf = File::open(&file)?;
+    let buf = File::open(file)?;
     let uuid = Uuid::new_v4();
     let dir_name = uuid.hyphenated().to_string();
     //dbg!(&dir_name);
