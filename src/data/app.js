@@ -5,6 +5,6 @@ export const appData = {
     "codeareatitle": "Generated Code",
     "pinselectlabel": "Pin Number",
     "copybuttontext": "Copy",
-    "arduinominpin":1,
-    "arduinomaxpin":11,
+    "arduinominpin": 1,
+    "arduinomaxpin": 11,
 }
