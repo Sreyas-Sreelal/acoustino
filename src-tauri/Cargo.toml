@@ -1,8 +1,8 @@
 [package]
 name = "acoustino"
-version = "0.0.0"
+version = "0.1.0"
 description = "A Tauri App"
-authors = ["you"]
+authors = ["Sreyas Sreelal"]
 license = ""
 repository = ""
 edition = "2021"
