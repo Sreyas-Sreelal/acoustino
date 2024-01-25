@@ -30,14 +30,10 @@ pub fn parse_mxml(path: &str) -> Result<Vec<Note>, Box<dyn Error>> {
             },
             Ok(Event::Empty(e)) => {
                 if e.name().as_ref() == b"sound" {
-                    dbg!("here");
-
                     if tempo == 1 {
-                        let mut count = 0;
+                        //let mut count = 0;
                         let mut iter = e.attributes();
                         while let Some(Ok(x)) = iter.next() {
-                            dbg!(x.key, count);
-
                             if x.key == quick_xml::name::QName(b"tempo") {
                                 tempo = x
                                     .value
@@ -48,7 +44,7 @@ pub fn parse_mxml(path: &str) -> Result<Vec<Note>, Box<dyn Error>> {
                                     .parse()?;
                                 break;
                             }
-                            count += 1;
+                            //count += 1;
                         }
                         if tempo == 1 {
                             tempo = 120;

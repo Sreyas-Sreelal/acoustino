@@ -6,7 +6,7 @@ use glob::glob;
 use note::Note;
 use std::{
     error::Error,
-    fs::{create_dir, read_to_string, File},
+    fs::{create_dir, File},
     path::PathBuf,
 };
 use uuid::Uuid;
@@ -18,11 +18,11 @@ pub fn extract_mxl_file(file: &str) -> Result<String, Box<dyn Error>> {
         create_dir(&temp_path)?;
     }
 
-    dbg!(&temp_path);
+    //dbg!(&temp_path);
     let buf = File::open(&file)?;
     let uuid = Uuid::new_v4();
     let dir_name = uuid.hyphenated().to_string();
-    dbg!(&dir_name);
+    //dbg!(&dir_name);
 
     extract(&buf, &PathBuf::from(&temp_path.join(&dir_name)), true)?;
     for entry in glob(&(temp_path.join(&dir_name).to_str().unwrap().to_owned() + "/**/*.xml"))
@@ -33,8 +33,8 @@ pub fn extract_mxl_file(file: &str) -> Result<String, Box<dyn Error>> {
             if path.ends_with("container.xml") {
                 continue;
             }
-            
-            dbg!(&path);
+
+            //dbg!(&path);
             return Ok(path);
         }
     }

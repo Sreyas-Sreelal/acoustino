@@ -6,7 +6,6 @@ use util::{do_conversion, extract_mxl_file};
 
 #[tauri::command]
 fn convert(file: &str, pin: isize) -> Result<String, String> {
-    print!("file is {}", file);
     if file.ends_with(".mxl") {
         match extract_mxl_file(file) {
             Ok(path) => {
