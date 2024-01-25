@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 import { open } from "@tauri-apps/api/dialog";
-import { Button, Col, Divider, Modal, Row } from "antd";
+import { Col, Divider, Modal, Row } from "antd";
 
 import CodeArea from "./container/CodeArea";
 import Header from "./container/Header";
