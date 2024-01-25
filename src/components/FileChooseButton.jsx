@@ -3,7 +3,7 @@ import { Button } from "antd";
 
 const FileChooseButton = ({ text, handler }) => {
     return (
-        <Button type="primary" icon={<FileAddOutlined />} onClick={handler}>
+        <Button style={{backgroundColor:"black"}} type="primary" icon={<FileAddOutlined />} onClick={handler}>
             {text}
         </Button>
     )
