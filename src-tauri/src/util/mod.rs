@@ -2,8 +2,49 @@ mod frequency;
 mod note;
 mod parser;
 
+use glob::glob;
 use note::Note;
-use std::error::Error;
+use std::{
+    error::Error,
+    fs::{create_dir, read_to_string, File},
+    path::PathBuf,
+};
+use uuid::Uuid;
+use zip_extract::extract;
+
+pub fn extract_mxl_file(file: &str) -> Result<String, Box<dyn Error>> {
+    let temp_path = std::env::temp_dir().join("acoustino");
+    if !temp_path.exists() {
+        create_dir(&temp_path)?;
+    }
+
+    dbg!(&temp_path);
+    let buf = File::open(&file)?;
+    let uuid = Uuid::new_v4();
+    let dir_name = uuid.hyphenated().to_string();
+    dbg!(&dir_name);
+
+    extract(&buf, &PathBuf::from(&temp_path.join(&dir_name)), true)?;
+    for entry in glob(&(temp_path.join(&dir_name).to_str().unwrap().to_owned() + "/**/*.xml"))
+        .expect("Failed to read glob pattern")
+    {
+        if let Ok(path) = entry {
+            let path = path.display().to_string();
+            if path.ends_with("container.xml") {
+                continue;
+            }
+            
+            dbg!(&path);
+            return Ok(path);
+        }
+    }
+
+    Err(
+        "Failed to extract given mxl file, try extracting it manually!"
+            .to_string()
+            .into(),
+    )
+}
 
 fn code_generate(notes: Vec<Note>, pin: isize) -> String {
     let mut code = String::new();
