@@ -18,7 +18,7 @@ const Header = () => {
             <Row>
                 <Col span={24}>
 
-                    <Link href={appData.repositorylink}>Github</Link>
+                    <Link style={{color:"grey"}} href={appData.repositorylink}>{appData.repoLinkText}</Link>
 
                 </Col>
             </Row>

@@ -7,5 +7,6 @@ export const appData = {
     "copybuttontext": "Copy",
     "arduinominpin": 1,
     "arduinomaxpin": 11,
-    "repositorylink":"https://github.com/sreyas-sreelal/acoustino"
+    "repositorylink":"https://github.com/sreyas-sreelal/acoustino",
+    "repoLinkText":"Checkout the Github page"
 }
