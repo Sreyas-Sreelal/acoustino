@@ -1,10 +1,10 @@
 [package]
 name = "acoustino"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["Sreyas Sreelal"]
+description = "Acoustino - MusicXML to Arduino Piezo Buzzer Code"
+authors = ["Sreyas Sreelal (__SyS__)"]
 license = ""
-repository = ""
+repository = "https://github.com/Sreyas-Sreelal/acoustino"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
