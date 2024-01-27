@@ -1,6 +1,6 @@
 [package]
 name = "acoustino"
-version = "0.1.0"
+version = "0.1.1"
 description = "Acoustino - MusicXML to Arduino Piezo Buzzer Code"
 authors = ["Sreyas Sreelal (__SyS__)"]
 license = ""
